@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Asistencia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:italic,wght@400;700&family=Raleway:wght@300;400&display=swap');
+
+        body {
+            background-color: #fcf9f2; /* Crema muy claro */
+            font-family: 'Raleway', sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff; /* Blanco puro */
+            padding: 40px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #bc9c70;
+            margin-bottom: 10px;
+        }
+
+        .boda-info {
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: #8c8c8c;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #e0e0e0;
+            background-color: #fafafa;
+            border-radius: 0;
+            font-family: inherit;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #bc9c70;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #a6865a;
+        }
+
+        #msg-exito {
+            display: none;
+            color: #bc9c70;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>[NOMBRE NOVIA] & [NOMBRE NOVIO]</h1>
+        <div class="boda-info">
+            [FECHA DE LA BODA] <br>
+            [LUGAR DE LA BODA]
+        </div>
+    </div>
+
+    <form id="form-boda">
+        <input type="text" name="nombres" placeholder="Nombres" required>
+        <input type="text" name="apellidos" placeholder="Apellidos" required>
+        <input type="email" name="correo" placeholder="Correo electrónico" required>
+        
+        <select name="asistencia" required>
+            <option value="" disabled selected>¿Nos acompañarás?</option>
+            <option value="Sí">Sí, con mucho gusto</option>
+            <option value="No">Lamentablemente no puedo</option>
+        </select>
+
+        <textarea name="mensaje" placeholder="Déjanos un mensaje (Opcional)" rows="3"></textarea>
+        
+        <button type="submit" id="btn-enviar">Confirmar Asistencia</button>
+    </form>
+
+    <div id="msg-exito">
+        ¡Muchas gracias por confirmar! <br>
+        <small id="sub-msg">Si confirmaste que asistes, pronto recibirás tu pase QR por correo.</small>
+    </div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzVoHwvVZzHYnAyldC419Cn46h1u6g28HuZ1nZdgsrErQk66bC3W5TYK1mHEmJ5-smZ/exec
+'; 
+    const form = document.getElementById('form-boda');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('btn-enviar');
+        btn.disabled = true;
+        btn.innerText = "PROCESANDO...";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            form.style.display = 'none';
+            document.getElementById('msg-exito').style.display = 'block';
+            
+            // Si marcó "No", ocultar el mensaje del QR
+            if(form.asistencia.value === "No") {
+                document.getElementById('sub-msg').style.display = 'none';
+            }
+        })
+        .catch(error => alert('Hubo un error, por favor intenta de nuevo.'));
+    });
+</script>
+
+</body>
+</html>
