@@ -7,19 +7,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&family=Raleway:wght@300;400;600&display=swap');
         
-        /* Animación de entrada para toda la tarjeta */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Animación flotante suave para el logo */
         @keyframes floatLogo {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
@@ -35,9 +26,7 @@
             min-height: 100vh; 
             margin: 0; 
             padding: 20px;
-            overflow-x: hidden;
         }
-
         .card { 
             background: white; 
             padding: 40px; 
@@ -47,124 +36,34 @@
             width: 100%; 
             text-align: center; 
             border: 1px solid #f5ebe6; 
-            animation: fadeInUp 0.8s ease-out; /* Movimiento atractivo inicial */
+            animation: fadeInUp 0.8s ease-out;
         }
-
-        .logo-container { 
-            margin-bottom: 25px; 
-            display: inline-block;
-            animation: floatLogo 4s ease-in-out infinite; /* Movimiento continuo en el logo */
-        }
-
-        .logo-placeholder { 
-            max-width: 180px; 
-            height: auto; 
-        }
+        .logo-container { margin-bottom: 25px; display: inline-block; animation: floatLogo 4s ease-in-out infinite; }
+        .logo-placeholder { max-width: 180px; height: auto; }
         
-        h1 { 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #EC6835; 
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 5px; 
-        }
-
-        .info { 
-            color: #666; 
-            font-size: 0.85em; 
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            margin-bottom: 30px; 
-            font-weight: 600;
-        }
-
+        h1 { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #EC6835; font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .info { color: #666; font-size: 0.85em; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .info-detalles { font-size: 0.95em; color: #444; margin-top: 5px; text-transform: none; letter-spacing: 0; }
         
         input, select { 
-            width: 100%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border: 1px solid #dcd0ca; 
-            box-sizing: border-box; 
-            background: #fcfbfa; 
-            font-family: inherit;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #dcd0ca; 
+            box-sizing: border-box; background: #fcfbfa; font-family: inherit; border-radius: 6px; transition: all 0.3s ease;
         }
-
-        input:focus, select:focus { 
-            outline: none; 
-            border-color: #EC6835; 
-            box-shadow: 0 0 5px rgba(236, 104, 83, 0.2);
-        }
+        input:focus, select:focus { outline: none; border-color: #EC6835; box-shadow: 0 0 5px rgba(236, 104, 83, 0.2); }
         
         button, .btn-download { 
-            width: 100%; 
-            padding: 15px; 
-            background: #EC6835; 
-            color: white; 
-            border: none; 
-            border-radius: 6px;
-            cursor: pointer; 
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            transition: background 0.3s, transform 0.2s; 
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 15px;
-            display: block;
-            text-decoration: none;
-            box-sizing: border-box;
+            width: 100%; padding: 15px; background: #EC6835; color: white; border: none; border-radius: 6px;
+            cursor: pointer; letter-spacing: 1px; text-transform: uppercase; transition: background 0.3s; font-size: 14px; font-weight: 600; margin-top: 15px; display: block; text-decoration: none; box-sizing: border-box;
         }
-
-        button:hover, .btn-download:hover { 
-            background: #d45322; 
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
+        button:hover, .btn-download:hover { background: #d45322; }
         
-        #contenedor-exito { 
-            display: none; 
-            margin-top: 20px; 
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        /* Diseño idéntico al del correo institucional solicitado */
-        .preview-correo {
-            font-family: Arial, sans-serif; 
-            color: #444; 
-            background-color: #fdfbfa; 
-            padding: 25px; 
-            border: 1px solid #EC6835; 
-            text-align: center; 
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
+        #contenedor-exito { display: none; margin-top: 20px; animation: fadeInUp 0.5s ease-out; }
+        .preview-correo { font-family: Arial, sans-serif; color: #444; background-color: #fdfbfa; padding: 25px; border: 1px solid #EC6835; text-align: center; border-radius: 8px; margin-top: 20px; }
         .msg-titulo { color: #EC6835; font-size: 22px; font-weight: 700; margin-bottom: 10px; }
-        
-        .qr-box { 
-            margin: 20px auto; 
-            padding: 10px; 
-            background: white; 
-            border: 2px solid #EC6835; 
-            display: inline-block; 
-            border-radius: 4px; 
-        }
-
+        .qr-box { margin: 20px auto; padding: 10px; background: white; border: 2px solid #EC6835; display: inline-block; border-radius: 4px; }
         .qr-box img { display: block; max-width: 180px; height: auto; }
-        
-        .info-recuadro {
-            background-color: #fff; 
-            border: 1px solid #dcd0ca; 
-            padding: 15px; 
-            border-radius: 4px;
-            margin: 15px 0;
-        }
+        .info-recuadro { background-color: #fff; border: 1px solid #dcd0ca; padding: 15px; border-radius: 4px; margin: 15px 0; }
         .info-recuadro p { margin: 5px 0; font-size: 13px; }
-
         .instruccion-final { font-size: 13px; color: #EC6835; font-weight: bold; margin-top: 15px; }
     </style>
 </head>
@@ -210,41 +109,35 @@
                 <div class="preview-correo">
                     <h1 class="msg-titulo">¡Hola <span id="lblInvitado"></span>!</h1>
                     <p style="font-size: 15px; margin: 10px 0;">Tu registro ha sido procesado con éxito para nuestro próximo evento.</p>
-                    
-                    <div class="qr-box">
-                        <img id="qrImage" src="" alt="Código QR de acreditación">
-                    </div>
+                    <div class="qr-box"><img id="qrImage" src="" alt="Código QR"></div>
                     <p style="font-size: 11px; color: #666; margin: 0;">Tu pase personal de acceso (QR)</p>
-
                     <div class="info-recuadro">
                         <p style="color: #EC6835; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">La Positiva Seguros</p>
                         <p style="font-weight: bold;"><b>Evento Institucional</b></p>
                         <p style="color: #555;">[FECHA DEL EVENTO] | [LUGAR DEL EVENTO]</p>
                     </div>
-                    
                     <p class="instruccion-final">Por favor, presente este código QR digital o impreso al ingresar.</p>
                 </div>
-                
                 <button type="button" id="btnDescargar" class="btn-download">Descargar Código QR</button>
             </div>
 
             <div id="vistaNoAsistira" style="display: none;">
                 <div class="preview-correo" style="border-color: #dcd0ca;">
                     <h1 class="msg-titulo" style="color: #666;">Registro Recibido</h1>
-                    <p style="font-size: 15px;">Agradecemos tu respuesta. </p>
+                    <p style="font-size: 15px;">Agradecemos tu respuesta. Hemos tomado nota de que no podrás acompañarnos en esta oportunidad.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzQXG7mJN5ugtaQYXgNqGbsxdJF3vTcZCAW-Vl1QAc4vMkAjoVQvldeU34srcrlr4VJ/exec'; // <--- TU LINK DE GOOGLE APPS SCRIPT
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzQXG7mJN5ugtaQYXgNqGbsxdJF3vTcZCAW-Vl1QAc4vMkAjoVQvldeU34srcrlr4VJ/exec'; // <--- CAMBIA ESTO POR TU URL REAL /exec
         const form = document.getElementById('corporateForm');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
             const btn = document.getElementById('btnEnviar');
-            btn.innerText = "PROCESANDO...";
+            btn.innerText = "VERIFICANDO...";
             btn.disabled = true;
 
             const nombreCompleto = form.nombreCompleto.value;
@@ -252,43 +145,48 @@
             const empresa = form.empresa.value;
             const asistencia = document.getElementById('asistenciaSelect').value;
 
-            // URL del código QR original
             const qrData = "DNI: " + dni + " | Empresa: " + empresa + " | Invitado: " + nombreCompleto;
             const qrUrl = "https://quickchart.io/qr?text=" + encodeURIComponent(qrData);
 
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: new FormData(form)})
-                .then(() => {
-                    form.style.display = 'none';
-                    document.getElementById('contenedor-exito').style.display = 'block';
+            // Al remover 'no-cors', ahora podemos interpretar las respuestas personalizadas de Google
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => response.json())
+                .then(res => {
+                    if (res.result === "duplicate") {
+                        // Alerta si el backend detecta DNI o Correo idénticos
+                        alert("⚠️ " + res.message);
+                        btn.innerText = "ENVIAR CONFIRMACIÓN";
+                        btn.disabled = false;
+                    } else if (res.result === "success") {
+                        form.style.display = 'none';
+                        document.getElementById('contenedor-exito').style.display = 'block';
 
-                    if (asistencia === "Sí") {
-                        document.getElementById('lblInvitado').innerText = nombreCompleto;
-                        document.getElementById('qrImage').src = qrUrl;
-                        document.getElementById('vistaAsistira').style.display = 'block';
-                        
-                        // Configuración avanzada para forzar la descarga del QR como archivo físico
-                        document.getElementById('btnDescargar').addEventListener('click', () => {
-                            fetch(qrUrl)
-                                .then(response => response.blob())
-                                .then(blob => {
-                                    const urlBlob = window.URL.createObjectURL(blob);
-                                    const a = document.createElement('a');
-                                    a.style.display = 'none';
-                                    a.href = urlBlob;
-                                    a.download = 'Acreditacion_QR_' + dni + '.png'; // Nombre del archivo guardado
-                                    document.body.appendChild(a);
-                                    a.click();
-                                    window.URL.revokeObjectURL(urlBlob);
-                                })
-                                .catch(() => alert('No se pudo procesar la descarga directa. Intenta tomar una captura de pantalla.'));
-                        });
-
-                    } else {
-                        document.getElementById('vistaNoAsistira').style.display = 'block';
+                        if (asistencia === "Sí") {
+                            document.getElementById('lblInvitado').innerText = nombreCompleto;
+                            document.getElementById('qrImage').src = qrUrl;
+                            document.getElementById('vistaAsistira').style.display = 'block';
+                            
+                            document.getElementById('btnDescargar').addEventListener('click', () => {
+                                fetch(qrUrl)
+                                    .then(r => r.blob())
+                                    .then(blob => {
+                                        const urlBlob = window.URL.createObjectURL(blob);
+                                        const a = document.createElement('a');
+                                        a.style.display = 'none';
+                                        a.href = urlBlob;
+                                        a.download = 'Acreditacion_QR_' + dni + '.png';
+                                        document.body.appendChild(a);
+                                        a.click();
+                                        window.URL.revokeObjectURL(urlBlob);
+                                    });
+                            });
+                        } else {
+                            document.getElementById('vistaNoAsistira').style.display = 'block';
+                        }
                     }
                 })
                 .catch(error => {
-                    alert('Error en la comunicación con el servidor. Por favor, intente nuevamente.');
+                    alert('Error de conexión. Por favor, intente de nuevo.');
                     btn.innerText = "ENVIAR CONFIRMACIÓN";
                     btn.disabled = false;
                 });
