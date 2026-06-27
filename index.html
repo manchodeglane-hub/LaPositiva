@@ -12,6 +12,7 @@
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
+        /* FONDO ANTERIOR RESTAURADO PARA TODA LA PÁGINA */
         body { 
             font-family: 'Raleway', sans-serif; 
             display: flex; 
@@ -20,48 +21,60 @@
             min-height: 100vh; 
             margin: 0; 
             padding: 20px;
+            position: relative;
             background-color: #060302; 
             box-sizing: border-box;
         }
 
-        /* Caja del formulario optimizada con 'formulario.jpg' ultra-transparente */
-        .card { 
-            /* Se mezcla la imagen vertical con una capa sólida muy oscura para mantenerla al mínimo nivel de visibilidad */
-            background: linear-gradient(rgba(14, 8, 5, 0.96), rgba(14, 8, 5, 0.96)), url('formulario.jpg');
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('logofondo.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            opacity: 0.35; 
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* CAJA DEL FORMULARIO CON 'formulario.jpg' MÁS VISIBLE */
+        .card { 
+            /* Se redujo el oscurecimiento (ahora a 0.85) para que la imagen se note mucho más nítida */
+            background: linear-gradient(rgba(14, 8, 5, 0.85), rgba(14, 8, 5, 0.85)), url('formulario.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 35px 25px; 
             border-radius: 16px; 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85); 
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.90); 
             max-width: 440px; 
             width: 100%; 
             text-align: center; 
-            border: 1px solid rgba(252, 160, 95, 0.18); 
+            border: 1px solid rgba(252, 160, 95, 0.25); 
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
         }
 
         .header-congreso {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         
-        /* Único título limpio solicitado */
         .header-congreso h1 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: #ffffff;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
             letter-spacing: 0.5px;
             line-height: 1.4;
-            margin: 0 0 15px 0;
+            margin: 0 0 10px 0;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
         
-        /* Bloque de fecha y lugar */
         .info-detalles { 
             font-size: 0.95em; 
             color: #fca05f; 
@@ -70,15 +83,20 @@
             font-weight: 600;
             letter-spacing: 0.5px;
         }
+
+        /* CONTENEDOR INTERNO PARA BAJAR LOS CAMPOS A LA ALTURA DE LA 'X' */
+        .form-fields-container {
+            padding-top: 155px; /* Empuja los inputs hacia abajo coincidiendo perfectamente sobre la estructura de la X */
+        }
         
-        /* Campos del Formulario */
+        /* Inputs y Selects */
         input, select { 
             width: 100%; 
             padding: 13px; 
             margin: 8px 0; 
-            border: 1px solid rgba(252, 160, 95, 0.30); 
+            border: 1px solid rgba(252, 160, 95, 0.40); 
             box-sizing: border-box; 
-            background: rgba(20, 12, 8, 0.80); 
+            background: rgba(15, 8, 4, 0.90); /* Mayor solidez interna para facilitar la lectura sobre el fondo nítido */
             color: #ffffff; 
             font-family: inherit; 
             font-size: 14px;
@@ -87,14 +105,14 @@
         }
         
         input::placeholder {
-            color: #a3928a; 
+            color: #bfaea5; 
         }
 
         input:focus, select:focus { 
             outline: none; 
             border-color: #fca05f; 
-            background: rgba(30, 18, 12, 0.95);
-            box-shadow: 0 0 12px rgba(252, 160, 95, 0.35); 
+            background: rgba(25, 14, 8, 0.98);
+            box-shadow: 0 0 12px rgba(252, 160, 95, 0.45); 
         }
 
         select option {
@@ -140,27 +158,30 @@
         </div>
         
         <form id="corporateForm">
-            <input type="text" name="nombreCompleto" placeholder="Nombres y Apellidos" required 
-                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="Ingrese únicamente letras y espacios.">
-            
-            <input type="text" name="dni" placeholder="DNI" required 
-                   pattern="^[0-9]{8}$" title="El DNI debe contener exactamente 8 números enteros.">
-            
-            <input type="text" name="empresa" placeholder="Nombre de la Empresa" required 
-                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s0-9.\-]+$" title="Ingrese el nombre de la organización.">
-            
-            <input type="email" name="correo" placeholder="Correo electrónico institucional" required>
-            
-            <input type="text" name="celular" placeholder="Celular" required 
-                   pattern="^[0-9]{9}$" title="El celular debe contener exactamente 9 números enteros.">
-            
-            <select name="asistencia" id="asistenciaSelect" required>
-                <option value="" disabled selected>¿Confirmas tu asistencia?</option>
-                <option value="Sí">Sí, asistiré</option>
-                <option value="No de momento">No podré asistir</option>
-            </select>
-            
-            <button type="submit" id="btnEnviar">Enviar Confirmación</button>
+            <!-- Los campos ahora se albergan dentro de este contenedor espaciado para alinearse a la X -->
+            <div class="form-fields-container">
+                <input type="text" name="nombreCompleto" placeholder="Nombres y Apellidos" required 
+                       pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="Ingrese únicamente letras y espacios.">
+                
+                <input type="text" name="dni" placeholder="DNI" required 
+                       pattern="^[0-9]{8}$" title="El DNI debe contener exactamente 8 números enteros.">
+                
+                <input type="text" name="empresa" placeholder="Nombre de la Empresa" required 
+                       pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s0-9.\-]+$" title="Ingrese el nombre de la organización.">
+                
+                <input type="email" name="correo" placeholder="Correo electrónico institucional" required>
+                
+                <input type="text" name="celular" placeholder="Celular" required 
+                       pattern="^[0-9]{9}$" title="El celular debe contener exactamente 9 números enteros.">
+                
+                <select name="asistencia" id="asistenciaSelect" required>
+                    <option value="" disabled selected>¿Confirmas tu asistencia?</option>
+                    <option value="Sí">Sí, asistiré</option>
+                    <option value="No de momento">No podré asistir</option>
+                </select>
+                
+                <button type="submit" id="btnEnviar">Enviar Confirmación</button>
+            </div>
         </form>
 
         <div id="contenedor-exito">
@@ -191,8 +212,7 @@
     </div>
 
     <script>
-        // Recuerda ingresar la URL de ejecución válida de tu script implementado
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbygonuC6nUt_1A8rWQKf9-oWEoa9JFdVLmPVtYfO6GjpKiZXrSMqI_Nl5V8BmXN6q8O/exec'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvrhQRea2zLhomhU2zBuFJmnX4I2L7uYCqQP119VguyjnGaqMwA2deswXINUnIhFwO/exec'; 
         const form = document.getElementById('corporateForm');
 
         form.addEventListener('submit', e => {
@@ -245,7 +265,7 @@
                     }
                 })
                 .catch(error => {
-                    alert('Error de conexión o configuración del servidor. Por favor, revisa la URL de Apps Script.');
+                    alert('Error de conexión o configuración del servidor.');
                     btn.innerText = "Enviar Confirmación";
                     btn.disabled = false;
                 });
