@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmación de Asistencia - Congreso Internacional</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&family=Raleway:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght=300;400;700&family=Raleway:wght@300;400;600&display=swap');
         
         @keyframes subtleScaleIn {
             0% { opacity: 0; transform: scale(0.96) translateY(15px); }
@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* FONDO GENERAL RESALTADO (logofondo.jpg) */
+        /* FONDO GENERAL DE LA PÁGINA (logofondo.jpg) */
         body::after {
             content: "";
             position: fixed;
@@ -42,48 +42,47 @@
             border-radius: 8px;
         }
 
-        /* CAJA DEL FORMULARIO COMPACTADA Y MOVIDA AL COSTADO DE LA X */
+        /* CAJA DEL FORMULARIO: RE-ESTABILIZADA, MÁS CENTRADA Y CON FONDO MÁS BLANCO */
         .card { 
-            background: linear-gradient(rgba(14, 8, 5, 0.55), rgba(14, 8, 5, 0.55)), url('formulario.jpg');
+            /* Capa de degradado más suave (0.35) para que Vision Zero y La Positiva se vean más blancos */
+            background: linear-gradient(rgba(14, 8, 5, 0.35), rgba(14, 8, 5, 0.35)), url('formulario.jpg');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             
-            /* SE REDUJO EL PADDING SUPERIOR E INFERIOR PARA HACER LA CAJA MUCHO MÁS CORTA */
-            padding: 30px 25px 25px 25px; 
+            /* Relleno intermedio equilibrado para recuperar el alto de la caja */
+            padding: 95px 25px 35px 25px; 
             
             border-radius: 16px; 
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95); 
-            max-width: 410px; /* Caja ligeramente más angosta y compacta */
+            max-width: 420px; 
             width: 100%; 
             text-align: center; 
             border: 1px solid rgba(252, 160, 95, 0.45); 
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
 
-            /* SE AJUSTÓ PARA UBICARLA CASI AL CENTRO, JUSTO AL COSTADO DE LA X SIN TAPARLA */
-            margin-left: 12%;
+            /* AJUSTE DE POSICIÓN: Más centrado pero respetando el espacio de la X */
+            margin-left: 18%;
             margin-right: auto;
         }
 
-        /* Adaptación fluida para pantallas de móviles */
         @media (max-width: 950px) {
             body { padding: 15px; }
             body::after { top: 15px; left: 15px; right: 15px; bottom: 15px; }
-            .card { margin: 0 auto; padding-top: 25px; }
+            .card { margin: 0 auto; padding-top: 80px; }
         }
 
-        /* Bloque de títulos optimizado en tamaño */
         .header-congreso {
             margin-bottom: 15px;
         }
         
         .header-congreso h1 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #ffffff;
-            font-size: 17px; /* Letra un poco más pequeña para ahorrar espacio vertical */
+            color: #e3dad5; /* Blanco rebajado/suavizado para que no sea tan fuerte */
+            font-size: 17px; 
             font-weight: 700;
             letter-spacing: 0.5px;
             line-height: 1.3;
@@ -103,6 +102,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
         
+        /* ORDENADO: LUGAR | FECHA | HORA */
         .info-detalles { 
             font-size: 0.88em; 
             color: #fca05f; 
@@ -113,16 +113,14 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
-        /* Contenedor de campos pegado hacia arriba */
         .form-fields-container {
             padding-top: 5px; 
         }
         
-        /* Reducción en los márgenes de los inputs para achicar la caja */
         input, select { 
             width: 100%; 
-            padding: 11px 13px; /* Más compacto */
-            margin: 5px 0; /* Menor espacio entre campos */
+            padding: 11px 13px; 
+            margin: 5px 0; 
             border: 1px solid rgba(252, 160, 95, 0.50); 
             box-sizing: border-box; 
             background: rgba(10, 5, 3, 0.95); 
@@ -182,9 +180,9 @@
         <div class="header-congreso">
             <h1>Congreso Internacional de Prevención de Riesgos Laborales</h1>
             <div class="header-subtitulo">Liderar en Zero: Transformando la SST en motor de Productividad</div>
-            <!-- SE AÑADIÓ LA HORA AQUÍ -->
+            <!-- ORDEN SOLICITADO: LUGAR | FECHA | HORA -->
             <div class="info-detalles">
-                19 de Agosto del 2026 | 9:00 AM | Hotel Marriott
+                Hotel Marriott | 19 de Agosto del 2026 | 9:00 AM
             </div>
         </div>
         
@@ -224,9 +222,10 @@
                     <div class="info-recuadro">
                         <p style="color: #fca05f; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 9px; margin-bottom: 4px;">Acreditación Oficial</p>
                         <p style="font-weight: bold; color: #fff; margin-bottom: 4px; font-size: 12px;">Congreso Internacional de Prevención de Riesgos Laborales</p>
+                        <!-- REORDENADO AQUÍ TAMBIÉN -->
+                        <p><b>Lugar:</b> Hotel Marriott</p>
                         <p><b>Fecha:</b> 19 de Agosto del 2026</p>
                         <p><b>Hora:</b> 9:00 AM</p>
-                        <p><b>Lugar:</b> Hotel Marriott</p>
                     </div>
                     <p class="instruccion-final">Presente este código QR desde su celular al ingresar.</p>
                 </div>
@@ -243,7 +242,7 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzptRDdIlAMQFPHUXJeDUOqM2Uvl84tTvcjLDjTn_9FR2O5M487wp_BvO3PQmHTYrvC/exec'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwFza0tR5UebFwAfbia1nquEG-rcWIRZEru9wmRFvIiqkpw-cR_HvAQKDs4N1z8Gqvb/exec'; 
         const form = document.getElementById('corporateForm');
 
         form.addEventListener('submit', e => {
