@@ -8,10 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&family=Raleway:wght@300;400;600&display=swap');
         
         @keyframes subtleScaleIn {
-            0% { opacity: 0; transform: scale(0.96) translateY(15px); }
+            0 { opacity: 0; transform: scale(0.96) translateY(15px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
+        /* CONFIGURACIÓN GLOBAL CON MARGEN DE 1CM (aprox. 38px) */
         body { 
             font-family: 'Raleway', sans-serif; 
             display: flex; 
@@ -19,45 +20,62 @@
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 20px;
+            padding: 38px; /* Margen perimetral simulando 1 cm en los 4 lados */
             position: relative;
             background-color: #060302; 
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
+        /* FONDO GENERAL MÁS RESALTADO (logofondo.jpg) */
         body::after {
             content: "";
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            /* El fondo respeta el margen de 1cm de los bordes */
+            top: 38px; left: 38px; right: 38px; bottom: 38px;
             background-image: url('logofondo.jpg');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            opacity: 0.35; 
+            opacity: 0.55; /* Se aumentó la opacidad para que resalte mucho más */
+            filter: contrast(1.1); /* Realza los detalles y colores del fondo */
             z-index: -1;
             pointer-events: none;
+            border-radius: 8px;
         }
 
-        /* CAJA DEL FORMULARIO CON ESPACIADO SUPERIOR PARA VISUALIZAR LOGOS */
+        /* CAJA DEL FORMULARIO DESPLAZADA DEL MEDIO Y CON FONDO MÁS NÍTIDO */
         .card { 
-            background: linear-gradient(rgba(14, 8, 5, 0.85), rgba(14, 8, 5, 0.85)), url('formulario.jpg');
+            /* Capa de degradado más clara (0.75) para que resalten al máximo los logos internos */
+            background: linear-gradient(rgba(14, 8, 5, 0.75), rgba(14, 8, 5, 0.75)), url('formulario.jpg');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             
-            /* NUEVO: Deja libre la franja de arriba para que se lean "Vision Zero" y "La Positiva Seguros" */
-            padding: 140px 25px 35px 25px; 
+            /* Deja libre la franja superior para ver Vision Zero y La Positiva Seguros */
+            padding: 150px 25px 35px 25px; 
             
             border-radius: 16px; 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.90); 
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95); 
             max-width: 440px; 
             width: 100%; 
             text-align: center; 
-            border: 1px solid rgba(252, 160, 95, 0.25); 
+            border: 1px solid rgba(252, 160, 95, 0.35); 
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
+
+            /* SEPARAR DEL MEDIO: En pantallas grandes, mueve la caja a la derecha para no tapar el fondo */
+            margin-left: auto;
+            margin-right: 5%;
+        }
+
+        /* Si la pantalla es pequeña (celulares), se centra de forma estándar automáticamente */
+        @media (max-width: 900px) {
+            body { padding: 15px; }
+            body::after { top: 15px; left: 15px; right: 15px; bottom: 15px; }
+            .card { margin: 0 auto; padding-top: 135px; }
         }
 
         /* Bloque de títulos intermedio */
@@ -74,7 +92,8 @@
             line-height: 1.4;
             margin: 0 0 10px 0;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
         
         .info-detalles { 
@@ -84,21 +103,21 @@
             line-height: 1.5;
             font-weight: 600;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* CONTENEDOR DE CAMPOS AJUSTADO PARA QUEDAR A LA ALTURA DE LA 'X' */
+        /* CONTENEDOR DE CAMPOS ALINEADO A LA X */
         .form-fields-container {
-            /* Se redujo un poco para compensar el nuevo espacio superior del contenedor padre */
-            padding-top: 45px; 
+            padding-top: 40px; 
         }
         
         input, select { 
             width: 100%; 
             padding: 13px; 
             margin: 8px 0; 
-            border: 1px solid rgba(252, 160, 95, 0.40); 
+            border: 1px solid rgba(252, 160, 95, 0.50); 
             box-sizing: border-box; 
-            background: rgba(15, 8, 4, 0.90); 
+            background: rgba(10, 5, 3, 0.95); /* Fondo de input más opaco para garantizar lectura sobre la imagen nítida */
             color: #ffffff; 
             font-family: inherit; 
             font-size: 14px;
@@ -107,14 +126,14 @@
         }
         
         input::placeholder {
-            color: #bfaea5; 
+            color: #c7b7ae; 
         }
 
         input:focus, select:focus { 
             outline: none; 
             border-color: #fca05f; 
-            background: rgba(25, 14, 8, 0.98);
-            box-shadow: 0 0 12px rgba(252, 160, 95, 0.45); 
+            background: #190e08;
+            box-shadow: 0 0 12px rgba(252, 160, 95, 0.60); 
         }
 
         select option {
@@ -126,7 +145,7 @@
             width: 100%; padding: 15px; background: #e0843a; color: white; border: none; border-radius: 6px;
             cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; font-size: 13px; font-weight: 700; margin-top: 15px; display: block; text-decoration: none; box-sizing: border-box;
         }
-        button:hover, .btn-download:hover { background: #fca05f; box-shadow: 0 0 15px rgba(252, 160, 95, 0.35); }
+        button:hover, .btn-download:hover { background: #fca05f; box-shadow: 0 0 15px rgba(252, 160, 95, 0.45); }
         button:active { transform: scale(0.99); }
         
         #contenedor-exito { display: none; margin-top: 20px; animation: subtleScaleIn 0.5s ease-out; }
@@ -152,7 +171,6 @@
 <body>
 
     <div class="card">
-        <!-- El encabezado ahora inicia más abajo, respetando la cabecera limpia de la imagen -->
         <div class="header-congreso">
             <h1>Congreso Internacional de Prevención de Riesgos Laborales</h1>
             <div class="info-detalles">
@@ -177,7 +195,7 @@
                        pattern="^[0-9]{9}$" title="El celular debe contener exactamente 9 números enteros.">
                 
                 <select name="asistencia" id="asistenciaSelect" required>
-                    <option value="" disabled center selected>¿Confirmas tu asistencia?</option>
+                    <option value="" disabled selected>¿Confirmas tu asistencia?</option>
                     <option value="Sí">Sí, asistiré</option>
                     <option value="No de momento">No podré asistir</option>
                 </select>
@@ -214,7 +232,7 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwc4n_EKTvwjg5GToZx0naV5mwYYzukhKADxGgpKcPK1JtoF35K0188VMiQpl2Pc6yZ/exec'; 
+        const scriptURL = 'TU_URL_DE_APPS_SCRIPT_AQUI'; 
         const form = document.getElementById('corporateForm');
 
         form.addEventListener('submit', e => {
