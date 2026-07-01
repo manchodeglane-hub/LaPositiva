@@ -12,7 +12,6 @@
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* CONFIGURACIÓN GLOBAL CON MARGEN DE 1CM */
         body { 
             font-family: 'Raleway', sans-serif; 
             display: flex; 
@@ -43,93 +42,93 @@
             border-radius: 8px;
         }
 
-        /* CAJA DEL FORMULARIO EN EL LADO IZQUIERDO Y CON IMAGEN INTERNA MÁS BLANCA */
+        /* CAJA DEL FORMULARIO COMPACTADA Y MOVIDA AL COSTADO DE LA X */
         .card { 
-            /* Se redujo la opacidad de la capa negra (0.45) para que las letras de formulario.jpg brillen más blancas */
-            background: linear-gradient(rgba(14, 8, 5, 0.45), rgba(14, 8, 5, 0.45)), url('formulario.jpg');
+            background: linear-gradient(rgba(14, 8, 5, 0.55), rgba(14, 8, 5, 0.55)), url('formulario.jpg');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             
-            /* Espacio superior para despejar los logotipos superiores */
-            padding: 150px 25px 35px 25px; 
+            /* SE REDUJO EL PADDING SUPERIOR E INFERIOR PARA HACER LA CAJA MUCHO MÁS CORTA */
+            padding: 30px 25px 25px 25px; 
             
             border-radius: 16px; 
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95); 
-            max-width: 440px; 
+            max-width: 410px; /* Caja ligeramente más angosta y compacta */
             width: 100%; 
             text-align: center; 
             border: 1px solid rgba(252, 160, 95, 0.45); 
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
 
-            /* COLOCAR A LA IZQUIERDA: Empuja el espacio a la derecha para no tapar la X del fondo */
+            /* SE AJUSTÓ PARA UBICARLA CASI AL CENTRO, JUSTO AL COSTADO DE LA X SIN TAPARLA */
+            margin-left: 12%;
             margin-right: auto;
-            margin-left: 5%;
         }
 
-        /* Ajuste automático para dispositivos móviles */
-        @media (max-width: 900px) {
+        /* Adaptación fluida para pantallas de móviles */
+        @media (max-width: 950px) {
             body { padding: 15px; }
             body::after { top: 15px; left: 15px; right: 15px; bottom: 15px; }
-            .card { margin: 0 auto; padding-top: 135px; }
+            .card { margin: 0 auto; padding-top: 25px; }
         }
 
-        /* Bloque de títulos */
+        /* Bloque de títulos optimizado en tamaño */
         .header-congreso {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .header-congreso h1 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: #ffffff;
-            font-size: 19px;
+            font-size: 17px; /* Letra un poco más pequeña para ahorrar espacio vertical */
             font-weight: 700;
             letter-spacing: 0.5px;
-            line-height: 1.4;
+            line-height: 1.3;
             margin: 0 0 6px 0;
             text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
 
         .header-subtitulo {
-            font-size: 14px;
+            font-size: 12px;
             color: #ffffff;
             font-style: italic;
             font-weight: 400;
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
             line-height: 1.3;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
         
         .info-detalles { 
-            font-size: 0.95em; 
+            font-size: 0.88em; 
             color: #fca05f; 
-            margin-top: 5px;
-            line-height: 1.5;
+            margin-top: 3px;
+            line-height: 1.4;
             font-weight: 600;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
 
-        /* Contenedor de campos */
+        /* Contenedor de campos pegado hacia arriba */
         .form-fields-container {
-            padding-top: 25px; 
+            padding-top: 5px; 
         }
         
+        /* Reducción en los márgenes de los inputs para achicar la caja */
         input, select { 
             width: 100%; 
-            padding: 13px; 
-            margin: 8px 0; 
+            padding: 11px 13px; /* Más compacto */
+            margin: 5px 0; /* Menor espacio entre campos */
             border: 1px solid rgba(252, 160, 95, 0.50); 
             box-sizing: border-box; 
             background: rgba(10, 5, 3, 0.95); 
             color: #ffffff; 
             font-family: inherit; 
-            font-size: 14px;
+            font-size: 13px;
             border-radius: 6px; 
             transition: all 0.3s ease;
         }
@@ -151,30 +150,30 @@
         }
         
         button, .btn-download { 
-            width: 100%; padding: 15px; background: #e0843a; color: white; border: none; border-radius: 6px;
-            cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; font-size: 13px; font-weight: 700; margin-top: 15px; display: block; text-decoration: none; box-sizing: border-box;
+            width: 100%; padding: 13px; background: #e0843a; color: white; border: none; border-radius: 6px;
+            cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; font-size: 12px; font-weight: 700; margin-top: 10px; display: block; text-decoration: none; box-sizing: border-box;
         }
         button:hover, .btn-download:hover { background: #fca05f; box-shadow: 0 0 15px rgba(252, 160, 95, 0.45); }
         button:active { transform: scale(0.99); }
         
-        #contenedor-exito { display: none; margin-top: 20px; animation: subtleScaleIn 0.5s ease-out; }
+        #contenedor-exito { display: none; margin-top: 15px; animation: subtleScaleIn 0.5s ease-out; }
         
         .preview-correo { 
             font-family: Arial, sans-serif; 
             color: #ffffff; 
             background-color: #120905; 
-            padding: 20px; 
+            padding: 18px; 
             border: 2px solid #e0843a; 
             text-align: center; 
             border-radius: 8px; 
-            margin-top: 20px; 
+            margin-top: 15px; 
         }
-        .msg-titulo { color: #fca05f; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-        .qr-box { margin: 15px auto; padding: 10px; background: white; border: 1px solid #dcd0ca; display: inline-block; border-radius: 4px; }
-        .qr-box img { display: block; max-width: 160px; height: auto; }
-        .info-recuadro { background-color: #1c100a; border: 1px solid rgba(252, 160, 95, 0.25); padding: 12px; border-radius: 4px; margin: 15px 0; text-align: left; }
-        .info-recuadro p { margin: 5px 0; font-size: 12px; color: #e1d5cf; }
-        .instruccion-final { font-size: 12px; color: #fca05f; font-weight: bold; margin-top: 15px; letter-spacing: 0.5px; }
+        .msg-titulo { color: #fca05f; font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        .qr-box { margin: 12px auto; padding: 8px; background: white; border: 1px solid #dcd0ca; display: inline-block; border-radius: 4px; }
+        .qr-box img { display: block; max-width: 150px; height: auto; }
+        .info-recuadro { background-color: #1c100a; border: 1px solid rgba(252, 160, 95, 0.25); padding: 10px; border-radius: 4px; margin: 12px 0; text-align: left; }
+        .info-recuadro p { margin: 4px 0; font-size: 11px; color: #e1d5cf; }
+        .instruccion-final { font-size: 11px; color: #fca05f; font-weight: bold; margin-top: 12px; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -183,8 +182,9 @@
         <div class="header-congreso">
             <h1>Congreso Internacional de Prevención de Riesgos Laborales</h1>
             <div class="header-subtitulo">Liderar en Zero: Transformando la SST en motor de Productividad</div>
+            <!-- SE AÑADIÓ LA HORA AQUÍ -->
             <div class="info-detalles">
-                19 de Agosto del 2026 | Hotel Marriott
+                19 de Agosto del 2026 | 9:00 AM | Hotel Marriott
             </div>
         </div>
         
@@ -218,13 +218,14 @@
             <div id="vistaAsistira" style="display: none;">
                 <div class="preview-correo">
                     <h1 class="msg-titulo">¡Registro Confirmado!</h1>
-                    <p style="font-size: 14px; margin: 5px 0; color: #fff;" id="lblInvitado"></p>
+                    <p style="font-size: 13px; margin: 5px 0; color: #fff;" id="lblInvitado"></p>
                     <div class="qr-box"><img id="qrImage" src="" alt="Código QR"></div>
                     <p style="font-size: 11px; color: #a3928a; margin: 0;">Tu pase personal de acceso (QR)</p>
                     <div class="info-recuadro">
-                        <p style="color: #fca05f; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; margin-bottom: 5px;">Acreditación Oficial</p>
-                        <p style="font-weight: bold; color: #fff; margin-bottom: 5px; font-size: 13px;">Congreso Internacional de Prevención de Riesgos Laborales</p>
+                        <p style="color: #fca05f; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 9px; margin-bottom: 4px;">Acreditación Oficial</p>
+                        <p style="font-weight: bold; color: #fff; margin-bottom: 4px; font-size: 12px;">Congreso Internacional de Prevención de Riesgos Laborales</p>
                         <p><b>Fecha:</b> 19 de Agosto del 2026</p>
+                        <p><b>Hora:</b> 9:00 AM</p>
                         <p><b>Lugar:</b> Hotel Marriott</p>
                     </div>
                     <p class="instruccion-final">Presente este código QR desde su celular al ingresar.</p>
@@ -235,14 +236,14 @@
             <div id="vistaNoAsistira" style="display: none;">
                 <div class="preview-correo" style="border-color: rgba(252, 160, 95, 0.25);">
                     <h1 class="msg-titulo" style="color: #a3928a;">Registro Recibido</h1>
-                    <p style="font-size: 14px; color: #dcd6d3;">Agradecemos tu respuesta. Hemos tomado nota de que no podrás acompañarnos en esta oportunidad.</p>
+                    <p style="font-size: 13px; color: #dcd6d3;">Agradecemos tu respuesta. Hemos tomado nota de que no podrás acompañarnos en esta oportunidad.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        const scriptURL = 'TU_URL_DE_APPS_SCRIPT_AQUI'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzptRDdIlAMQFPHUXJeDUOqM2Uvl84tTvcjLDjTn_9FR2O5M487wp_BvO3PQmHTYrvC/exec'; 
         const form = document.getElementById('corporateForm');
 
         form.addEventListener('submit', e => {
