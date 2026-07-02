@@ -16,7 +16,7 @@
             font-family: 'Raleway', sans-serif; 
             display: flex; 
             justify-content: center; 
-            align-items: flex-start; 
+            align-items: flex-start; /* Permite controlar el posicionamiento preciso con márgenes */
             min-height: 100vh; 
             margin: 0; 
             padding: 20px; 
@@ -41,7 +41,7 @@
             pointer-events: none;
         }
 
-        /* CAJA DEL FORMULARIO: ALINEADA EN ALTURA Y ANCHO A LA "X" DEL FONDO */
+        /* CAJA DEL FORMULARIO AGRANDADA Y POSICIONADA ABAJO DEL TEXTO CORPORATIVO */
         .card { 
             background: linear-gradient(rgba(14, 8, 5, 0.35), rgba(14, 8, 5, 0.35)), url('formulario.jpg');
             background-size: cover;
@@ -50,37 +50,37 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             
-            /* Ajuste de padding interior para equilibrar el tamaño arriba/abajo */
-            padding: 45px 25px 25px 25px; 
+            /* Padding ampliado para aumentar el alto general de la caja */
+            padding: 60px 30px 40px 30px; 
             
             border-radius: 16px; 
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95); 
-            max-width: 380px; /* Reducido ligeramente para encajar en el cuadrante derecho de la X */
+            max-width: 440px; /* Ancho ampliado para mayor presencia visual */
             width: 100%; 
             text-align: center; 
             border: 1px solid rgba(252, 160, 95, 0.45); 
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
 
-            /* AJUSTE DE POSICIÓN EXCLUSIVO */
-            margin-top: 15px;    /* Se sube la caja para nivelar su altura con la parte alta del gráfico */
-            margin-bottom: 15px; /* Equilibrio inferior */
-            margin-left: auto;   /* Desplazamiento total a la derecha */
-            margin-right: 3%;    /* Ajuste para que quede al borde derecho exacto sin pisar la X */
+            /* CONFIGURACIÓN DE ALTURA CRUCIAL PARA PROTEGER EL FONDO */
+            margin-top: 140px;   /* Se desplaza hacia abajo para despejar por completo el texto superior */
+            margin-bottom: 30px; 
+            margin-left: auto;   /* Desplazamiento al extremo derecho */
+            margin-right: 3%;    /* Ajuste de proximidad con el límite derecho de la ventana */
         }
 
         @media (max-width: 950px) {
             body { align-items: center; padding: 15px; }
-            .card { margin: 0 auto; padding-top: 40px; }
+            .card { margin: 0 auto; padding-top: 45px; }
         }
 
         .header-congreso {
             margin-top: 0px; 
-            margin-bottom: 15px; 
+            margin-bottom: 25px; 
         }
         
         .lema-fila1 {
-            font-size: 13px; 
+            font-size: 14px; 
             color: #fca05f; 
             font-weight: 700;
             text-transform: uppercase; 
@@ -90,11 +90,11 @@
         }
 
         .lema-fila2 {
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: #ffffff;
             font-style: italic; 
             font-weight: 400;
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             line-height: 1.3;
             text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
@@ -102,18 +102,18 @@
         .header-congreso h1 {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: #e3dad5; 
-            font-size: 14px; 
+            font-size: 15px; 
             font-weight: 700;
             letter-spacing: 0.5px;
-            line-height: 1.3;
-            margin: 0 0 10px 0;
-            padding-top: 8px;
+            line-height: 1.4;
+            margin: 0 0 12px 0;
+            padding-top: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.20); 
             text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
         
         .info-detalles { 
-            font-size: 0.80em; 
+            font-size: 0.85em; 
             color: #fca05f; 
             margin-top: 4px;
             line-height: 1.4;
@@ -123,19 +123,19 @@
         }
 
         .form-fields-container {
-            padding-top: 2px; 
+            padding-top: 5px; 
         }
         
         input, select { 
             width: 100%; 
-            padding: 9px 12px; 
-            margin: 4px 0; 
+            padding: 12px 14px; /* Inputs ligeramente más grandes y legibles */
+            margin: 6px 0; 
             border: 1px solid rgba(252, 160, 95, 0.50); 
             box-sizing: border-box; 
             background: rgba(10, 5, 3, 0.95); 
             color: #ffffff; 
             font-family: inherit; 
-            font-size: 13px;
+            font-size: 13.5px;
             border-radius: 6px; 
             transition: all 0.3s ease;
         }
@@ -157,8 +157,8 @@
         }
         
         button, .btn-download { 
-            width: 100%; padding: 11px; background: #e0843a; color: white; border: none; border-radius: 6px;
-            cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; font-size: 12px; font-weight: 700; margin-top: 8px; display: block; text-decoration: none; box-sizing: border-box;
+            width: 100%; padding: 13px; background: #e0843a; color: white; border: none; border-radius: 6px;
+            cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; font-size: 12.5px; font-weight: 700; margin-top: 12px; display: block; text-decoration: none; box-sizing: border-box;
         }
         button:hover, .btn-download:hover { background: #fca05f; box-shadow: 0 0 15px rgba(252, 160, 95, 0.45); }
         button:active { transform: scale(0.99); }
@@ -169,18 +169,18 @@
             font-family: Arial, sans-serif; 
             color: #ffffff; 
             background-color: #120905; 
-            padding: 12px; 
+            padding: 15px; 
             border: 2px solid #e0843a; 
             text-align: center; 
             border-radius: 8px; 
             margin-top: 5px; 
         }
-        .msg-titulo { color: #fca05f; font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-        .qr-box { margin: 8px auto; padding: 6px; background: white; border: 1px solid #dcd0ca; display: inline-block; border-radius: 4px; }
-        .qr-box img { display: block; max-width: 135px; height: auto; }
-        .info-recuadro { background-color: #1c100a; border: 1px solid rgba(252, 160, 95, 0.25); padding: 8px; border-radius: 4px; margin: 8px 0; text-align: left; }
-        .info-recuadro p { margin: 3px 0; font-size: 11px; color: #e1d5cf; }
-        .instruccion-final { font-size: 11px; color: #fca05f; font-weight: bold; margin-top: 8px; letter-spacing: 0.5px; }
+        .msg-titulo { color: #fca05f; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .qr-box { margin: 10px auto; padding: 6px; background: white; border: 1px solid #dcd0ca; display: inline-block; border-radius: 4px; }
+        .qr-box img { display: block; max-width: 145px; height: auto; }
+        .info-recuadro { background-color: #1c100a; border: 1px solid rgba(252, 160, 95, 0.25); padding: 10px; border-radius: 4px; margin: 10px 0; text-align: left; }
+        .info-recuadro p { margin: 4px 0; font-size: 11.5px; color: #e1d5cf; }
+        .instruccion-final { font-size: 11.5px; color: #fca05f; font-weight: bold; margin-top: 10px; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -227,13 +227,13 @@
             <div id="vistaAsistira" style="display: none;">
                 <div class="preview-correo">
                     <h1 class="msg-titulo">¡Registro Confirmado!</h1>
-                    <p style="font-size: 13px; margin: 3px 0; color: #fff; font-weight: bold;" id="lblInvitado"></p>
+                    <p style="font-size: 14px; margin: 4px 0; color: #fff; font-weight: bold;" id="lblInvitado"></p>
                     
                     <div class="qr-box"><img id="qrImage" src="" alt="Código QR" crossorigin="anonymous"></div>
-                    <p style="font-size: 11px; color: #a3928a; margin: 0;">Tu pase personal de acceso (QR)</p>
+                    <p style="font-size: 11.5px; color: #a3928a; margin: 0;">Tu pase personal de acceso (QR)</p>
                     
                     <div class="info-recuadro">
-                        <p style="color: #fca05f; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 9px; margin: 0 0 2px 0;">Acreditación Oficial</p>
+                        <p style="color: #fca05f; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 9.5px; margin: 0 0 3px 0;">Acreditación Oficial</p>
                         <p><b>Pase Individual</b> vinculado al documento ingresado.</p>
                     </div>
                     <p class="instruccion-final">Presente este código QR desde su celular al ingresar.</p>
@@ -244,7 +244,7 @@
             <div id="vistaNoAsistira" style="display: none;">
                 <div class="preview-correo" style="border-color: rgba(252, 160, 95, 0.25);">
                     <h1 class="msg-titulo" style="color: #a3928a;">Registro Recibido</h1>
-                    <p style="font-size: 13px; color: #dcd6d3;">Agradecemos tu respuesta. Hemos tomado nota de que no podrás acompañarnos en esta oportunidad.</p>
+                    <p style="font-size: 13.5px; color: #dcd6d3;">Agradecemos tu respuesta. Hemos tomado nota de que no podrás acompañarnos en esta oportunidad.</p>
                 </div>
             </div>
         </div>
