@@ -16,7 +16,7 @@
             font-family: 'Raleway', sans-serif; 
             display: flex; 
             justify-content: center; 
-            align-items: center; 
+            align-items: flex-start; /* Cambiado a flex-start para controlar el inicio vertical con margin-top */
             min-height: 100vh; 
             margin: 0; 
             padding: 20px; 
@@ -26,15 +26,12 @@
             overflow-x: hidden;
         }
 
-        /* FONDO GENERAL DE LA PÁGINA (logofondo.jpg) - CORREGIDO */
+        /* FONDO GENERAL DE LA PÁGINA (logofondo.jpg) */
         body::after {
             content: "";
             position: fixed;
-            /* Se eliminó el margen de 25px/38px para quitar el borde exterior */
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('logofondo.jpg');
-            
-            /* 'contain' garantiza que la imagen NUNCA se corte y se vea completa */
             background-size: contain;
             background-position: center center;
             background-repeat: no-repeat;
@@ -44,7 +41,7 @@
             pointer-events: none;
         }
 
-        /* CAJA DEL FORMULARIO */
+        /* CAJA DEL FORMULARIO: POSICIONADA AL LADO DERECHO Y EMPUJADA HACIA ABAJO */
         .card { 
             background: linear-gradient(rgba(14, 8, 5, 0.35), rgba(14, 8, 5, 0.35)), url('formulario.jpg');
             background-size: cover;
@@ -64,12 +61,14 @@
             animation: subtleScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             box-sizing: border-box;
 
-            margin-left: 18%;
-            margin-right: auto;
+            /* NUEVA POSICIÓN CRUCIAL */
+            margin-top: 140px;   /* Empuja la caja hacia abajo para no tapar el texto superior 'Vision Zero' */
+            margin-left: auto;   /* Empuja la caja completamente hacia la derecha de la X */
+            margin-right: 8%;    /* Margen de seguridad con el borde derecho de la pantalla */
         }
 
         @media (max-width: 950px) {
-            body { padding: 15px; }
+            body { align-items: center; padding: 15px; }
             .card { margin: 0 auto; padding-top: 85px; }
         }
 
